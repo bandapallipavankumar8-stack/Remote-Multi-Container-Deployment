@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE       = "nginx:alpine"
-        MUMBAI_DOCKER_HOST = "tcp://3.110.123.71:2375" 
+        MUMBAI_DOCKER_HOST = "tcp://13.233.118.191:2375" 
     }
 
     stages {
