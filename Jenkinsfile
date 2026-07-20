@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-        stage('Deploy 5 Containers from src Folder') {
+        stage('Deploy 5 Containers from Root Folder') {
             steps {
                 script {
                     for (int i = 1; i <= 5; i++) {
@@ -28,9 +28,9 @@ pipeline {
                         echo "Launching ${containerName} on port ${hostPort}..."
                         sh "docker -H ${MUMBAI_DOCKER_HOST} run -d --name ${containerName} -p ${hostPort}:80 ${DOCKER_IMAGE}"
                         
-                        echo "Copying entire website src contents into ${containerName}..."
-                        // This copies index.html, style.css, and logo.png all at once
-                        sh "docker -H ${MUMBAI_DOCKER_HOST} cp src/. ${containerName}:/usr/share/nginx/html/"
+                        echo "Copying website contents from root into ${containerName}..."
+                        // Changed 'src/.' to '.' because your files are in the main root directory
+                        sh "docker -H ${MUMBAI_DOCKER_HOST} cp . ${containerName}:/usr/share/nginx/html/"
                     }
                 }
             }
