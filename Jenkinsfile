@@ -19,7 +19,7 @@ pipeline {
         stage('Deploy 3 Containers to Mumbai') {
             steps {
                 script {
-                    for (int i = 1; i <=5; i++) {
+                    for (int i = 1; i <= 10; i++) {
                         def containerName = "nginx-server-${i}"
                         def hostPort = 8080 + i 
 
